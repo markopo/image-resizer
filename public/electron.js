@@ -1,7 +1,8 @@
 const path = require("path");
 
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const isDev = require("electron-is-dev");
+const {openFile} = require("../src/lib/electron/openFile");
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
@@ -28,7 +29,8 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true,
-            webSecurity : false
+            webSecurity : false,
+            preload: path.join(__dirname, 'preload.js')
         }
     });
 
@@ -57,6 +59,18 @@ app.whenReady().then(() => {
             .then(name => console.log(`Added Extension:  ${name}`))
             .catch(error => console.log(`An error occurred: , ${error}`));
     }
+
+    ipcMain.on('app-event-send', (event, args) => {
+
+            switch (args) {
+                case 'send-file':
+                    openFile();
+                    break;
+                default:
+                    break;
+            }
+
+    })
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common

@@ -40,3 +40,9 @@ header .title {
 .container__main-content {
     width: 80vw;
 }
+
+.item-text {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 18vw;
+}
