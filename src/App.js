@@ -1,38 +1,19 @@
 import React from 'react';
 import './css/ion.min.css';
 import './css/styles.css';
+import Header from "./components/Header";
+import SideBar from "./components/Sidebar";
+import MainContent from "./components/MainContent";
 
 
 function App() {
 
   return (
     <div className="App">
-        <header className="bar tall">
-            <h1 className="title">Image Resizer</h1>
-        </header>
+        <Header />
         <div className="container">
-            <div className="sidebar container__sidebar">
-                <div className="button-open-container">
-                    <button className="btn" id="button-open">Open file</button>
-                </div>
-                <div className="heading">
-                    Files
-                </div>
-                <div className="items file__items">
-                    <div className="item file">
-                        Picture
-                    </div>
-                    <div className="item file">
-                        Picture
-                    </div>
-                    <div className="item file">
-                        Picture
-                    </div>
-                </div>
-            </div>
-            <div className="container__main-content">
-
-            </div>
+            <SideBar />
+            <MainContent />
         </div>
     </div>
   );
