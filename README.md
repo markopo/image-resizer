@@ -1,0 +1,3 @@
+## IMAGE RESIZER 
+ 
+Electron app 

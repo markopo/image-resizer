@@ -1,0 +1,16 @@
+{
+  "name": "image-resizer",
+  "version": "1.0.0",
+  "description": "A lightweight CSS framework that brings MacOS styled elements to Electron.",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=true electron .",
+    "build:macos": "electron-builder --macos --dir"
+  },
+  "author": "Marko",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.1.0",
+    "electron-builder": "^22.9.1"
+  }
+}

@@ -1,0 +1,42 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .title {
+    top: -5px;
+}
+
+.button-open-container {
+    display: flex;
+    margin: 2.5px;
+}
+
+.button-open-container button {
+    width: 100%;
+    max-width: 100%;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+
+.container__sidebar {
+    width: 20vw;
+    margin-top: 0px;
+}
+
+.container__main-content {
+    width: 80vw;
+}
