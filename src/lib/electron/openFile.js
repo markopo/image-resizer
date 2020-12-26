@@ -1,5 +1,6 @@
 const {dialog} = require('electron');
 const {BrowserWindow} = require("electron");
+const path = require('path');
 
 module.exports = {
     openFile: function () {
@@ -26,7 +27,16 @@ module.exports = {
 
                 if (canceled || !filePaths) return;
 
-                window.webContents.send('app-event-reply', {action: 'open-file', data: filePaths[0]});
+                const filename = path.basename(filePaths[0])
+
+                const fileObj = {
+                    name: filename,
+                    path: filePaths[0]
+                };
+
+                console.log('file: ', fileObj);
+
+                window.webContents.send('app-event-reply', {action: 'open-file', data: fileObj});
             });
 }
 

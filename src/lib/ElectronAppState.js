@@ -15,7 +15,7 @@ export function electronAppState(getState = {}, setStateCb) {
 
                     const openFiles = getState['open-file'] || [];
 
-                    if(!openFiles.find(x => x === data)) {
+                    if(!openFiles.find(x => x.path === data.path)) {
                         openFiles.push(data);
                     }
 

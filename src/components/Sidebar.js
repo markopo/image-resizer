@@ -23,7 +23,7 @@ const SideBar = (props) => {
                 {openFiles.map((file, index) => {
                     return (
                         <div key={index} className="item file">
-                            <span className="item-text">{file}</span>
+                            <span title={file.path} className="item-text">{file.name}</span>
                         </div>
                     );
                 })}

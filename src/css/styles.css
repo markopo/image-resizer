@@ -44,5 +44,8 @@ header .title {
 .item-text {
     white-space: nowrap;
     overflow: hidden;
-    max-width: 18vw;
+    text-overflow: ellipsis;
+    max-width: 16vw;
+    text-indent: 3px;
+    display: inline-block;
 }
