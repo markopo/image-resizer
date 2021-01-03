@@ -3,11 +3,12 @@ import {sendOpenFile} from "../lib/send/sendOpenFile";
 
 
 const SideBar = (props) => {
-    const { openFiles } = props;
+    const { openFiles, clickSelectedFile } = props;
 
     const clickOpenFile = () => {
             sendOpenFile();
     };
+
 
     console.log('open files ', openFiles);
 
@@ -23,7 +24,7 @@ const SideBar = (props) => {
                 {openFiles.map((file, index) => {
                     return (
                         <div key={index} className="item file">
-                            <span title={file.path} className="item-text">{file.name}</span>
+                            <span onClick={() => clickSelectedFile(file)} title={file.path} className="item-text">{file.name}</span>
                         </div>
                     );
                 })}

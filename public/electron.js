@@ -1,6 +1,6 @@
 const path = require("path");
 
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, protocol } = require("electron");
 const isDev = require("electron-is-dev");
 const {openFile} = require("../src/lib/electron/openFile");
 
@@ -59,6 +59,11 @@ app.whenReady().then(() => {
             .then(name => console.log(`Added Extension:  ${name}`))
             .catch(error => console.log(`An error occurred: , ${error}`));
     }
+
+    protocol.registerFileProtocol('file', (request, callback) => {
+        const pathname = request.url.replace('file:///', '');
+        callback(pathname);
+    });
 
     ipcMain.on('app-event-send', (event, args) => {
 

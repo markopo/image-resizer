@@ -4,11 +4,7 @@ const path = require('path');
 
 module.exports = {
     openFile: function () {
-
         console.log('open file');
-
-
-
         const window = BrowserWindow.getFocusedWindow();
 
         const options = {
