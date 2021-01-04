@@ -9,9 +9,6 @@ const SideBar = (props) => {
             sendOpenFile();
     };
 
-
-    console.log('open files ', openFiles);
-
     return (
         <div className="sidebar container__sidebar">
             <div className="button-open-container">

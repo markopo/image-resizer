@@ -1,5 +1,6 @@
 const {dialog} = require('electron');
 const {BrowserWindow} = require("electron");
+const gm = require("gm").subClass({imageMagick: true});
 const path = require('path');
 
 module.exports = {
@@ -23,16 +24,28 @@ module.exports = {
 
                 if (canceled || !filePaths) return;
 
-                const filename = path.basename(filePaths[0])
+                const filePath = filePaths[0];
+                const filename = path.basename(filePath);
 
-                const fileObj = {
-                    name: filename,
-                    path: filePaths[0]
-                };
+                gm(filePath).identify(function (err, value) {
+                      if(err) {
+                          console.log('error reading file: ', err);
+                          return;
+                      }
 
-                console.log('file: ', fileObj);
+                      console.log('value: ', value);
+                      const { format, size } = value;
 
-                window.webContents.send('app-event-reply', {action: 'open-file', data: fileObj});
+                      const fileObj = {
+                        name: filename,
+                        path: filePath,
+                        size: size,
+                        format: format
+                      };
+
+                      console.log('file: ', fileObj);
+                      window.webContents.send('app-event-reply', {action: 'open-file', data: fileObj});
+                });
             });
 }
 
