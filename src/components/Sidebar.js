@@ -1,5 +1,5 @@
 import React from 'react';
-import {sendOpenFile} from "../lib/send/sendOpenFile";
+import {sendOpenFile} from "../lib/send/sendOperation";
 
 
 const SideBar = (props) => {

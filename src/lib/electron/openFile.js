@@ -40,7 +40,8 @@ module.exports = {
                         name: filename,
                         path: filePath,
                         size: size,
-                        format: format
+                        format: format,
+                        minFile: null
                       };
 
                       console.log('file: ', fileObj);

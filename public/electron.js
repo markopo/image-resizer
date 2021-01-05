@@ -2,6 +2,7 @@ const path = require("path");
 
 const { app, BrowserWindow, ipcMain, protocol } = require("electron");
 const isDev = require("electron-is-dev");
+const {minimizeFile} = require("../src/lib/electron/minimizeFile");
 const {openFile} = require("../src/lib/electron/openFile");
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
@@ -66,10 +67,14 @@ app.whenReady().then(() => {
     });
 
     ipcMain.on('app-event-send', (event, args) => {
+            const { action, data } = args;
 
-            switch (args) {
+            switch (action) {
                 case 'send-file':
                     openFile();
+                    break;
+                case 'send-minimize-file':
+                    minimizeFile(data);
                     break;
                 default:
                     break;

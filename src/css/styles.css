@@ -12,6 +12,12 @@ header {
     align-items: center;
 }
 
+.heading {
+    font-size: 10px;
+    color: #777878;
+    font-weight: 600;
+}
+
 header .title {
     top: -5px;
 }
@@ -77,6 +83,23 @@ header .title {
     padding: 2px 0;
     margin: 0;
     font-size: .9rem;
+}
+
+.selected-image__table {
+    border: 1px solid #ccc;
+    padding: 2px 0;
+    margin: 0;
+    font-size: .9rem;
+    border-collapse: collapse;
+}
+
+.selected-image__table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .item-text {

@@ -16,7 +16,7 @@ function App() {
     };
 
     const clickSelectedFile = (file) => {
-        const action = appState['selected-file'] === null ? 'select-file' : 'unselect-file';
+        const action = 'select-file';
         clientAppState(action, file, appState, setStateCallback);
         console.log('click selected ', appState);
     };

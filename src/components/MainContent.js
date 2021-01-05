@@ -1,4 +1,5 @@
 import React from 'react';
+import {sendMinimizeFile} from "../lib/send/sendOperation";
 
 
 const SelectedImage = ({ selectedFile }) => {
@@ -22,10 +23,26 @@ const SelectedImage = ({ selectedFile }) => {
                     <img style={imageStyle} className="selected-image__image" alt={selectedFile.name} src={`file://${path}`} />
                 </div>
                 <div>
-                    <p className="selected-image__text">Width: {size.width}</p>
-                    <p className="selected-image__text">Height: {size.height}</p>
-                    <p className="selected-image__text">Format: <b>{format}</b></p>
-                    <p className="selected-image__text">Path: <b>{path}</b></p>
+                    <table className="selected-image__table">
+                        <tbody>
+                            <tr>
+                                <td>Width:</td>
+                                <td className="bold">{size.width}</td>
+                            </tr>
+                            <tr>
+                                <td>Height:</td>
+                                <td className="bold">{size.height}</td>
+                            </tr>
+                            <tr>
+                                <td>Format:</td>
+                                <td className="bold">{format}</td>
+                            </tr>
+                            <tr>
+                                <td>Path:</td>
+                                <td className="bold">{path}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>);
 };
@@ -37,11 +54,17 @@ const MainContent = (props) => {
          if(!file) return;
 
          console.log('click Min: ', file);
+         sendMinimizeFile(file);
     };
 
     return (
         <div className="container__main-content">
+            <div className="heading">
+                Minimize file:
+            </div>
             <div className="container__main-content__menu">
+                {/*<input title="minimize size" type="range" min="10" max="90" style={{ width: '200px' }} />*/}
+                {/*<input type="text" placeholder="minimize file name" />*/}
                 <button onClick={() => clickMinimize(selectedFile)} >min</button>
             </div>
             {selectedFile && (<SelectedImage selectedFile={selectedFile} />)}
